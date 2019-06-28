@@ -2,7 +2,7 @@ const db = require('../data/dbConfig');
 
 const { insert, getAll } = require('./gamesModel');
 
-describe('games model', () => {
+describe('GAMES MODEL', () => {
   beforeEach(async () => {
     await db('games').truncate();
   });
@@ -11,12 +11,12 @@ describe('games model', () => {
     expect(process.env.DB_ENV).toBe('testing');
   });
 
-  describe('insert()', () => {
+  describe('INSERT()', () => {
     it('should insert games', async () => {
       await insert({
-        title: 'Testing Placeholder',
-        genre: 'Genre Placeholder',
-        releaseYear: 'Release Placeholder'
+        title: 'Pacman',
+        genre: 'Arcade',
+        releaseYear: '1980'
       });
 
       const games = await db('games');
@@ -24,36 +24,35 @@ describe('games model', () => {
       expect(games).toHaveLength(1);
     });
 
-    it('should insert a new game', async () => {
+    it('should insert new game', async () => {
       let game = {
-        title: 'Testing Placeholder',
-        genre: 'Genre Placeholder',
-        releaseYear: 'Release Placeholder'
+        title: 'Pacman',
+        genre: 'Arcade',
+        releaseYear: '1980'
       };
       let inserted = await insert(game);
       expect(inserted.title).toBe(game.title);
 
       game = {
-        title: 'Testing Placeholder',
-        genre: 'Genre Placeholder',
-        releaseYear: 'Release Placeholder'
+        title: 'Pacman',
+        genre: 'Arcade',
+        releaseYear: '1980'
       };
       inserted = await insert(game);
       expect(inserted.title).toBe(game.title);
     });
   });
-
-  // Get all the games
-  describe('get all /', () => {
+  describe('GET ALL /', () => {
     it('should return an empty array', async () => {
       const games = await db('games');
+
       expect(games).toHaveLength(0);
     });
 
     it('should return an array of games', async () => {
       let games = [
-        { id: 1, title: 'godofwar'},
-        { id: 2, title: 'apex'}
+        { id: 1, title: 'godofwar' },
+        { id: 2, title: 'apex' }
       ];
       expect.arrayContaining(games);
     });

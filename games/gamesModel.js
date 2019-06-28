@@ -10,9 +10,9 @@ module.exports = {
 function insert(game) {
   return db('games')
     .insert(game, 'id', 'title', 'genre', 'releaseYear')
-    .then(([ids]) => {
+    .then(ids => {
       return db('games')
-        .where({ id })
+        .where({ id: ids[0] })
         .first();
     });
 }

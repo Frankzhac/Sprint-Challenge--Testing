@@ -6,9 +6,10 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('games').insert([
-        {id: 1, title: 'Pacman'},
-        {id: 2, title: 'God of War'},
-        {id: 3, title: 'rowValue3'}
+        { title: 'Pacman',
+          genre: 'Arcade',
+          releaseYear: '1980'
+        }
       ]);
     });
 };

@@ -1,6 +1,6 @@
 // Update with your config settings.
 
-// const dbConnnection = process.env.DATABASE_URL;
+const dbConnnection = process.env.DATABASE_URL;
 
 module.exports = {
   development: {
